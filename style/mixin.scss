@@ -1,0 +1,204 @@
+@import 'var.scss';
+
+// 多行省略
+@mixin ellipsis-multi-line($max-line: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $max-line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+@mixin icon-font2018($icon-code, $font-size, $position: 'before') {
+  font-family: 'icon2018' !important;
+  font-size: $font-size;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @if $position=='before' {
+    &:before {
+      content: $icon-code;
+    }
+  }
+
+  @else {
+    &:after {
+      content: $icon-code;
+    }
+  }
+}
+
+// 仅供m-r1b使用
+@mixin m-r1b-common($color, $wh) {
+  background: $color;
+  pointer-events: none;
+  position: absolute;
+  content: '';
+  #{$wh}: 1px;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+// 仅供m-r1b使用
+@mixin m-r1b-media($bf: before, $scale: scaleX) {
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    &:#{$bf} {
+      @if ($scale==scaleX) {
+        -webkit-transform: scaleX(0.5);
+        transform: scaleX(0.5);
+      }
+
+      @else if ($scale==scaleY) {
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+      }
+    }
+  }
+
+  @media (-webkit-device-pixel-ratio: 1.5) {
+    &:#{$bf} {
+      @if ($scale==scaleX) {
+        -webkit-transform: scaleX(0.6666);
+        transform: scaleX(0.6666);
+      }
+
+      @else if ($scale==scaleY) {
+        -webkit-transform: scaleY(0.6666);
+        transform: scaleY(0.6666);
+      }
+    }
+  }
+
+  @media (-webkit-device-pixel-ratio: 3) {
+    &:#{$bf} {
+      @if ($scale==scaleX) {
+        -webkit-transform: scaleX(0.3333);
+        transform: scaleX(0.3333);
+      }
+
+      @else if ($scale==scaleY) {
+        -webkit-transform: scaleY(0.3333);
+        transform: scaleY(0.3333);
+      }
+    }
+  }
+}
+
+// 通过before，after实现的1px边框-4个边
+// @param {Color} $color [#D5D5D5] - 色值
+@mixin m-r1b($color: $col-1px-dark, $radius: 0) {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $color;
+    pointer-events: none;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 1.5),
+  (min-device-pixel-ratio: 1.5),
+  (min-resolution: 144dpi),
+  (min-resolution: 1.5dppx) {
+    &::after {
+      width: 200%;
+      height: 200%;
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+
+      @if $radius !=0 {
+        border-radius: $radius * 2;
+        -webkit-border-radius: $radius * 2;
+      }
+    }
+  }
+
+  @media (-webkit-device-pixel-ratio: 1.5) {
+    &::after {
+      width: 150%;
+      height: 150%;
+      -webkit-transform: scale(0.6666);
+      transform: scale(0.6666);
+
+      @if $radius !=0 {
+        border-radius: $radius * 3 / 2;
+        -webkit-border-radius: $radius * 3 / 2;
+      }
+    }
+  }
+
+  @media (-webkit-device-pixel-ratio: 3) {
+    &::after {
+      width: 300%;
+      height: 300%;
+      -webkit-transform: scale(0.3333);
+      transform: scale(0.3333);
+
+      @if $radius !=0 {
+        border-radius: $radius * 3;
+        -webkit-border-radius: $radius * 3;
+      }
+    }
+  }
+}
+
+@mixin m-r1bl($color: $col-1px-dark) {
+  position: relative;
+
+  &:before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    @include m-r1b-common($color, width);
+  }
+
+  @include m-r1b-media(before, scaleX);
+}
+
+@mixin m-r1br($color: $col-1px-dark) {
+  position: relative;
+
+  &:after {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    @include m-r1b-common($color, width);
+  }
+
+  @include m-r1b-media(after, scaleX);
+}
+
+@mixin m-r1bt($color: $col-1px-dark) {
+  position: relative;
+
+  &:before {
+    left: 0;
+    right: 0;
+    top: 0;
+    @include m-r1b-common($color, height);
+  }
+
+  @include m-r1b-media(before, scaleY);
+}
+
+@mixin m-r1bb($color: $col-1px-dark) {
+  position: relative;
+
+  &:after {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include m-r1b-common($color, height);
+  }
+
+  @include m-r1b-media(after, scaleY);
+}

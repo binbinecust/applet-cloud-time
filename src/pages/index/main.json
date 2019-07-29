@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "云时光艺术空间",
   "usingComponents": {
-    "van-button": "/static/vant/button/index.js"
+    "van-button": "/static/vant/button/index"
   }
 }

@@ -1,7 +1,15 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main"
+    "pages/interpretation/main",
+    "pages/course/main",
+    "pages/theme-activity/main",
+    "pages/works/main",
+    "pages/introduction/main",
+    "pages/activity/main",
+    "pages/appointment/main",
+    "pages/navigation/main",
+    "pages/mine/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,17 +23,38 @@
     "selectedColor": "#333",
     "borderStyle": "white",
 
-    "list": [{
-      "text": "首页",
-      "pagePath": "pages/index/main",
-      "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
-    }, {
-      "text": "订单",
-      "pagePath": "pages/logs/main",
-      "iconPath": "static/tabs/orders.png",
-      "selectedIconPath": "static/tabs/orders-active.png"
-    }],
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      },
+      {
+        "text": "活动",
+        "pagePath": "pages/activity/main",
+        "iconPath": "static/tabs/orders.png",
+        "selectedIconPath": "static/tabs/orders-active.png"
+      },
+      {
+        "text": "预约",
+        "pagePath": "pages/appointment/main",
+        "iconPath": "static/tabs/orders.png",
+        "selectedIconPath": "static/tabs/orders-active.png"
+      },
+      {
+        "text": "导航",
+        "pagePath": "pages/navigation/main",
+        "iconPath": "static/tabs/orders.png",
+        "selectedIconPath": "static/tabs/orders-active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/main",
+        "iconPath": "static/tabs/orders.png",
+        "selectedIconPath": "static/tabs/orders-active.png"
+      }
+    ],
     "position": "bottom"
   }
 }
