@@ -17,6 +17,7 @@
         </div>
       </swiper-item>
     </swiper>
+    <van-button></van-button>
   </div>
 </template>
 
